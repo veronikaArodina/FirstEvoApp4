@@ -1,21 +1,29 @@
 import { Component } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FirstPipePipe } from "./first-pipe.pipe";
+import { Router, RouterOutlet } from "@angular/router";
 
 @Component({
-  standalone: true, 
   selector: "app-root",
-  imports: [CommonModule, FirstPipePipe],
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  array_surname = [
-    { name: 'Petrov'},
-    { name: 'Ivanov'},
-    { name: 'Sidorov'},
-    { name: 'Panin'}
-  ]
-  date_now = new Date();
-  number = 23;
+  constructor(private router: Router) {}
+
+  goToMain() {
+    this.router.navigate(['/']);
+  }
+
+  goToContact() {
+    this.router.navigate(['/contact']);
+  }
+
+  goToAbout() {
+    this.router.navigate(['/about']);
+  }
+
+  goToItem() {
+    this.router.navigate(['/item/1']);
+  }
 }
